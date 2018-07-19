@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sử dụng json tải dữ liệu</title>
+    <style type="text/css">
+        body {
+            line-height: 30px;
+        }
+        table {
+            border-collapse: collapse ;
+        }
+        th,tr,td {
+            border: solid 1px black;
+            text-align: center;
+        }
+        th {
+            background-color: aquamarine;
+        }
+        th, td {
+            padding: 0 10px;
+        }
+        tr:hover {
+            background-color: antiquewhite;
+        }
+        .increase {
+            background-color: red;
+        }
+        .normal {
+            cursor: pointer ;
+        }
+        .decrease {
+            background-color: yellow;
+        }
+
+
+    </style>
+    <script language="JavaScript" src="home.js"></script>
+</head>
+<body>
+<input type="button" id="load" value="Tải dữ liệu vào bảng" ><br>
+<input type="button" id="sort_data" value="Sắp xếp sản phẩm"><br>
+<input type="text" id="search" value="" placeholder="Tìm kiếm sản phẩm">
+<table id="data_table">
+    <thead>
+    <th>STT</th><th onclick="click_title(this) " class="normal" id="id">Mã sản phẩm</th><th onclick="click_title(this)" class="normal" id="name">Tên sản phẩm</th>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script>
+    document.getElementById('load').onclick = function () {
+        this.disabled = true;
+        var xmlhtml = new XMLHttpRequest()
+            || new ActiveXObject("Microsoft.XMLHTTP");
+        xmlhtml.onreadystatechange = function () {
+            if (xmlhtml.readyState == 4 && xmlhtml.status == 200){
+                var obj = JSON.parse(this.responseText);
+                for (var i = 0; i < obj.length; i++){
+                    var r = document.createElement("tr");
+                    var c1 = document.createElement("td");
+                    var c2 = document.createElement("td");
+                    var c3 = document.createElement("td");
+                    c1.innerHTML = obj[i].STT;
+                    c2.innerHTML = obj[i].id;
+                    c3.innerHTML = obj[i].name;
+
+                    r.appendChild(c1);
+                    r.appendChild(c2);
+                    r.appendChild(c3);
+                    document.querySelector("#data_table tbody").appendChild(r);
+                }
+            }
+        };
+        xmlhtml.open("GET", "data.htm", true);
+        xmlhtml.send(null);
+    }
+</script>
+</body>
+</html>

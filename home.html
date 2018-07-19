@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sắp xếp và tìm kiếm</title>
+    <style type="text/css">
+        body {
+            line-height: 30px;
+        }
+        table {
+            border-collapse: collapse ;
+        }
+        th,tr,td {
+            border: solid 1px black;
+            text-align: center;
+        }
+        th {
+            background-color: aquamarine;
+        }
+        th, td {
+            padding: 0 10px;
+        }
+        tr:hover {
+            background-color: antiquewhite;
+        }
+        .increase {
+            background-color: red;
+        }
+        .normal {
+            cursor: pointer ;
+        }
+        .decrease {
+            background-color: yellow;
+        }
+
+
+    </style>
+    <script language="JavaScript" src="home.js"></script>
+</head>
+<body>
+<input type="button" value="Sắp xếp sản phẩm" id="btsort" onclick="sort()">
+<input type="text" id="search" value="" placeholder="Nhập nội dung tìm kiếm"><p>&euro ↑</p>
+<table id="data_table">
+    <thead>
+    <th>STT</th><th onclick="click_title(this)"  class="normal" id="id">Mã sản phẩm</th><th onclick="click_title(this)" class="normal" id="name">Tên sản phẩm</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td><td>SP001</td><td>Máy giặt</td>
+    </tr>
+    <tr>
+        <td>4</td><td>SP004</td><td>Điều hòa nhiệt độ</td>
+    </tr>
+    <tr>
+        <td>2</td><td>SP002</td><td>Bếp đa năng</td>
+    </tr>
+    <tr>
+        <td>3</td><td>SP003</td><td>Lò sưởi</td>
+    </tr>
+
+    <tr>
+        <td>5</td><td>SP005</td><td>Tủ lạnh</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+//check_in(document.getElementById('id'));
+</script>
+</body>
+</html>
